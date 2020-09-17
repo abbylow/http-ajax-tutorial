@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import axios from '../../axios'; //use this instance to get the different config from global config
 
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
