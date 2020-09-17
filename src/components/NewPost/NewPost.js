@@ -18,7 +18,7 @@ class NewPost extends Component {
         }
 
         // axios will stringify second argument to JSON 
-        axios.post('https://jsonplaceholder.typicode.com/posts/', post)
+        axios.post('/posts/', post)
         .then(response => {
             console.log(response)
         });
