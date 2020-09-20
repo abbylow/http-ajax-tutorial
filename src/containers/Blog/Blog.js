@@ -23,7 +23,7 @@ class Blog extends Component {
                                 //     textDecoration: 'underline'
                                 // }} //to write the active styling inline
                                 >
-                                    Home
+                                    Posts
                                     </NavLink>
                             </li>
                             <li>
@@ -40,7 +40,7 @@ class Blog extends Component {
                 </header>
                 {/* <Route path="/" exact render={()=><div>home1</div>}/>
                 <Route path="/" render={()=><p>home2</p>}/> */}
-                
+
                 {/* If not using switch, all matched route will be render; With Switch, only render the first matched route */}
                 <Switch>
                     <Route path="/" exact component={Posts} />
