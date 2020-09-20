@@ -6,6 +6,8 @@ import Posts from './Posts/Posts';
 // import NewPost from './NewPost/NewPost';
 import asyncComponent from '../../hoc/asyncComponent';
 
+// this is before React.lazy to be introduced, after React 16.6.0, we can use React.lazy 
+// Example: const AsyncNewPost = React.lazy(() => import('./NewPost/NewPost'));  
 // lazy loading, only import when this AsyncNewPost be rendered
 const AsyncNewPost = asyncComponent(() => {
     return import('./NewPost/NewPost');
