@@ -56,7 +56,7 @@ class Posts extends Component {
                 <section className="Posts">
                     {posts}
                 </section>
-                {/* create dynamic nested routes */}
+                {/* create dynamic nested routes; :postId is used for dynamic route params */}
                 <Route path={this.props.match.url + '/:postId'} exact component={FullPost} />
             </div>
         )

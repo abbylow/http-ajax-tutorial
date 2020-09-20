@@ -7,6 +7,9 @@ import NewPost from './NewPost/NewPost';
 // import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
+    state = {
+        auth: false
+    }
     render() {
         return (
             <div className="Blog">
@@ -43,8 +46,7 @@ class Blog extends Component {
 
                 {/* If not using switch, all matched route will be render; With Switch, only render the first matched route */}
                 <Switch>
-                    {/* dynamic route parameter */}
-                    <Route path="/new-post" component={NewPost} />
+                    {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
                     <Route path="/posts" component={Posts} />
                     <Redirect from="/" to="posts" />
                     {/* <Route path="/" component={Posts} /> */}
