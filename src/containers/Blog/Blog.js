@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
+import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
     render() {
@@ -13,30 +14,40 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             <li>
-                                <NavLink 
-                                to="/" 
-                                exact
+                                <NavLink
+                                    to="/"
+                                    exact
                                 // activeClassName='my-active' //to customize the class name, default active class name is "active"
                                 // activeStyle={{
                                 //     color: 'pink',
                                 //     textDecoration: 'underline'
                                 // }} //to write the active styling inline
-                                >Home</NavLink>
+                                >
+                                    Home
+                                    </NavLink>
                             </li>
                             <li>
                                 <NavLink to={{
                                     pathname: '/new-post',
                                     hash: '#submit',
                                     search: '?quick-submit=true'
-                                }}>New Post</NavLink>
+                                }}
+                                >New Post
+                                </NavLink>
                             </li>
                         </ul>
                     </nav>
                 </header>
                 {/* <Route path="/" exact render={()=><div>home1</div>}/>
                 <Route path="/" render={()=><p>home2</p>}/> */}
-                <Route path="/" exact component={Posts} />
-                <Route path="/new-post" component={NewPost} />
+                
+                {/* If not using switch, all matched route will be render; With Switch, only render the first matched route */}
+                <Switch>
+                    <Route path="/" exact component={Posts} />
+                    {/* dynamic route parameter */}
+                    <Route path="/new-post" component={NewPost} />
+                    <Route path="/:postId" exact component={FullPost} />
+                </Switch>
             </div>
         );
     }
