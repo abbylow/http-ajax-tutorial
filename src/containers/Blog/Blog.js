@@ -48,7 +48,9 @@ class Blog extends Component {
                 <Switch>
                     {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
                     <Route path="/posts" component={Posts} />
-                    <Redirect from="/" to="posts" />
+                    {/*a route w/o a path => this will catch all routes that dont match any route above */}
+                    <Route render={() => <h1>Not found</h1>} /> 
+                    {/* <Redirect from="/" to="posts" /> */}
                     {/* <Route path="/" component={Posts} /> */}
                     {/* <Route path="/:postId" exact component={FullPost} /> */}
                 </Switch>
