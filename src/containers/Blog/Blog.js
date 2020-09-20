@@ -3,13 +3,19 @@ import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from './Posts/Posts';
-import NewPost from './NewPost/NewPost';
-// import FullPost from './FullPost/FullPost';
+// import NewPost from './NewPost/NewPost';
+import asyncComponent from '../../hoc/asyncComponent';
+
+// lazy loading, only import when this AsyncNewPost be rendered
+const AsyncNewPost = asyncComponent(() => {
+    return import('./NewPost/NewPost');
+});
 
 class Blog extends Component {
     state = {
-        auth: false
+        auth: true
     }
+
     render() {
         return (
             <div className="Blog">
@@ -46,7 +52,7 @@ class Blog extends Component {
 
                 {/* If not using switch, all matched route will be render; With Switch, only render the first matched route */}
                 <Switch>
-                    {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
+                    {this.state.auth ? <Route path="/new-post" component={AsyncNewPost} /> : null}
                     <Route path="/posts" component={Posts} />
                     {/*a route w/o a path => this will catch all routes that dont match any route above */}
                     <Route render={() => <h1>Not found</h1>} /> 
