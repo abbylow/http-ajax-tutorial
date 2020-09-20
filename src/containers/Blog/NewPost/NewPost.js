@@ -23,7 +23,9 @@ class NewPost extends Component {
         axios.post('/posts/', post)
             .then(response => {
                 console.log(response);
-                this.setState({ submitted: true });
+                // this.setState({ submitted: true }); //replace the current page (so after redirecting, won't go back to this component)
+                // this.props.history.push('/posts'); //push this new route to the stack, so can go back to this component
+                this.props.history.replace('/posts'); //replace the current route, same with redirect
             });
     }
 
