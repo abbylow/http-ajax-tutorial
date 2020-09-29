@@ -1,3 +1,7 @@
+A simple React.js project. 
+
+The main purpose is to learn how to call API with axios. 
+
 Note: 
 
 asyncComponent is used to lazy load the component 
